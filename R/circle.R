@@ -21,8 +21,9 @@
 #' @importFrom grDevices chull
 #' @export
 circle <- function(data, r = 0.3, n_b = 5) {
-  data <- validate_data(data)
-  ch <- chull(data[, 1], data[, 2])
+  validate_data(data)
+  data <- unname(as.matrix(data))
+  ch <- chull(data)
   data_circ <- incr_radius(data[ch, , drop = F], r)
   angle_list <- df_to_angles(data_circ, r/4)
   round_list <- lapply(angle_list, q_bezier, n_b)
