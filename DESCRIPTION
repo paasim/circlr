@@ -1,11 +1,11 @@
 Package: circlr
 Type: Package
 Title: An R package to encircle a set of points
-Version: 0.1.1
+Version: 0.1.2
 Author:
     Markus Paasiniemi [aut]
 Maintainer:
-    Markus Paasiniemi <markus.paasiniemi@aalto.fi>
+    Markus Paasiniemi <paasim@iki.fi>
 Description:
     Encircle a set of points with a smooth (round-edged) convex hull in 2D using (quadratic) Bezier curves.
 License: MIT + file LICENSE

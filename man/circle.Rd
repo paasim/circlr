@@ -4,7 +4,7 @@
 \alias{circle}
 \title{Encircle a set of 2D points using quadratic Bezier curves}
 \usage{
-circle(data, r = 0.3, n_b = 5)
+circle(data, r = 0.3, n_b = 5, dupl_first = FALSE)
 }
 \arguments{
 \item{data}{A matrix or a data frame with two columns corresponding to the
@@ -15,6 +15,10 @@ points of the convex hull to the points used to create the bezier curves.}
 
 \item{n_b}{The number of points used near each corner of the encircling
 shape. Can be used to control the smoothness of the shape.}
+
+\item{dupl_first}{If \code{TRUE}, the first point is added to the end of the
+list. Useful for plotting the shapes using e.g. geom_path in ggplot2.
+Defaults to \code{FALSE}.}
 }
 \value{
 A matrix with points of the encircling shape as rows.

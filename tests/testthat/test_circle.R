@@ -11,6 +11,12 @@ test_that("circle returns a convex object with valid input", {
   expect_true(all(c[c_chull, ] %in% c))
 })
 
+test_that("duplicate_endpoint works as expected", {
+  c1 <- circle(data)
+  c2 <- circle(data, dupl_first = TRUE)
+  expect_equal(rbind(c1, c1[1, ]), c2)
+})
+
 test_that("circle returns an error with incorrect input", {
   expect_error(circle('a'), regexp = "class")
   expect_error(circle(matrix(0, 5, 5)), regexp = "two")
