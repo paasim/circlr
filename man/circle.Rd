@@ -2,19 +2,26 @@
 % Please edit documentation in R/circle.R
 \name{circle}
 \alias{circle}
-\title{Encircle a set of 2D points using quadratic Bezier curves}
+\title{Encircle a set of 2D points}
 \usage{
-circle(data, r = 0.3, n_b = 5, dupl_first = FALSE)
+circle(data, r = 0.5, n = ifelse(method == "b", 8, 25), method = "b",
+  dupl_first = FALSE)
 }
 \arguments{
 \item{data}{A matrix or a data frame with two columns corresponding to the
 x and y coordinates of the points.}
 
 \item{r}{The 'radius' of the encircling shape. Used as the distance from the
-points of the convex hull to the points used to create the bezier curves.}
+points of the convex hull to the points used to create the smooth shape.}
 
-\item{n_b}{The number of points used near each corner of the encircling
-shape. Can be used to control the smoothness of the shape.}
+\item{n}{The number of points used near each corner of the encircling
+shape. For Bezier curves, the number of points on each curve. For
+semicircles, the number of points on each circle (only part of which are
+kept).}
+
+\item{method}{Either "b" for a quadratic Bezier curve or "c" for a
+semicircle around each point of the hull. Bezier curves would typically be
+faster, but the semicircle-method might be slightly more visually pleasing.}
 
 \item{dupl_first}{If \code{TRUE}, the first point is added to the end of the
 list. Useful for plotting the shapes using e.g. geom_path in ggplot2.
