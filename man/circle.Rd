@@ -20,8 +20,7 @@ semicircles, the number of points on each circle (only part of which are
 kept).}
 
 \item{method}{Either "b" for a quadratic Bezier curve or "c" for a
-semicircle around each point of the hull. Bezier curves would typically be
-faster, but the semicircle-method might be slightly more visually pleasing.}
+semicircle around each point of the hull.}
 
 \item{dupl_first}{If \code{TRUE}, the first point is added to the end of the
 list. Useful for plotting the shapes using e.g. geom_path in ggplot2.
@@ -31,7 +30,13 @@ Defaults to \code{FALSE}.}
 A matrix with points of the encircling shape as rows.
 }
 \description{
-Find a smooth convex shape that encircles the points given as input.
+Find a smooth convex shape that encircles the points given as input using
+either Bezier curves or semicircles around each corner.
+The Bezier curves are typically be faster to compute, but the
+semicircle-method usually produces less points.
+In addition, the semicircle-method seems to look visually more pleasing if
+there are a lot of sharp edges whereas the Bezier curves work better with
+less sharp edges.
 }
 \examples{
 \donttest{
