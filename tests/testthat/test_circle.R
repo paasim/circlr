@@ -28,4 +28,5 @@ test_that("circle returns an error with incorrect input", {
   expect_error(circle(matrix(0, 5, 5)), regexp = "two")
   expect_error(circle(matrix(Inf, 2, 2)), regexp = "inf")
   expect_error(circle(matrix(1i, 2, 2)), regexp = "real")
+  expect_error(circle(matrix(1, 2, 2), method = "bb"), regexp = "method")
 })
