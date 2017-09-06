@@ -4,25 +4,23 @@
 \alias{circle}
 \title{Encircle a set of 2D points}
 \usage{
-circle(data, r = 0.5, n = ifelse(method == "b", 8, 25), method = "b",
-  dupl_first = FALSE)
+circle(data, r = 0.5, s = 8, method = "b", closed = FALSE)
 }
 \arguments{
-\item{data}{A matrix or a data frame with two columns corresponding to the
-x and y coordinates of the points.}
+\item{data}{Either a matrix or a data frame with two real-valued columns
+or a complex-valued vector.}
 
-\item{r}{The 'radius' of the encircling shape. Used as the distance from the
-points of the convex hull to the points used to create the smooth shape.}
+\item{r}{The distance from the data to the encircling shape.
+Must be non-negative. Defaults to 0.5.}
 
-\item{n}{The number of points used near each corner of the encircling
-shape. For Bezier curves, the number of points on each curve. For
-semicircles, the number of points on each circle (only part of which are
-kept).}
+\item{s}{A smoothness parameter. Must be greater than 2. For bezier curves,
+this equals to the number of points around each point on the convex hull and
+for method = "c", scaled to yield similar results. Defaults to 8.}
 
 \item{method}{Either "b" for a quadratic Bezier curve or "c" for a
-semicircle around each point of the hull.}
+semicircle around each point of the hull. Defaults to "b".}
 
-\item{dupl_first}{If \code{TRUE}, the first point is added to the end of the
+\item{closed}{If \code{TRUE}, the first point is added to the end of the
 list. Useful for plotting the shapes using e.g. geom_path in ggplot2.
 Defaults to \code{FALSE}.}
 }
@@ -32,17 +30,14 @@ A matrix with points of the encircling shape as rows.
 \description{
 Find a smooth convex shape that encircles the points given as input using
 either Bezier curves or semicircles around each corner.
-The Bezier curves are typically be faster to compute, but the
-semicircle-method usually produces less points.
-In addition, the semicircle-method seems to look visually more pleasing if
-there are a lot of sharp edges whereas the Bezier curves work better with
-less sharp edges.
 }
 \examples{
 \donttest{
 # A minimal example
-mat <- matrix(rnorm(10), 5)
-circ <- circle(mat)
+data <- data.frame(x = rnorm(5), y = rnorm(5))
+circ <- circle(data, closed = TRUE)
+ggplot(circ) + geom_path(aes(x = x, y = y))
 }
+
 
 }

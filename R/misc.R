@@ -1,7 +1,7 @@
 # get indices for left and right neighbor assuming clockwise ordering
 get_nb_inds <- function(n) list(l = c(n, 1:(n-1)), r = c(2:n, 1))
 
-# turn the data into a list of 'angles'
+# turn the data into a list of 'angles', distant r from the given
 data_to_angles <- function(data, r) {
   inds <- get_nb_inds(length(data))
   n_l <- Mod(data[inds$l] - data)
@@ -22,14 +22,8 @@ data_to_circles <- function(data, r, n) {
 
 get_chull <- function(data) data[chull(data)]
 
-# validate the data
-validate_data <- function(data) {
-  if (any(is.na(data) | is.infinite(data))) {
-    stop("'data' can not have missing or infinite values.")
-  } else if (!((NCOL(data) == 2 && is.numeric(data)))) {
-    stop(paste("'data' must have exactly two real-valued columns."))
-  }
-}
+data_format_error <- paste0("'data' must either have two real-valued columns",
+                            "or be a complex-valued vector.")
 
 .onAttach <- function(...) {
   ver <- utils::packageVersion("circlr")

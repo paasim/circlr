@@ -1,7 +1,5 @@
 # -Tests for the functions at trig.R.
 
-set.seed(1235)
-
 context("trig")
 
 test_that("bisec returns the correct angle bisector for some examples", {

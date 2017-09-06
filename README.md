@@ -11,10 +11,13 @@ Installation
     devtools::install_github('paasim/circlr')
 
 
-Usage
+Usage example
 -----
-
-    mat <- matrix(rnorm(10), 5)
-    circ <- circle(mat)
+    
+    library(circlr)
+    library(ggplot2)
+    data <- data.frame(x = rnorm(5), y = rnorm(5))
+    circ <- circle(data, closed = TRUE)
+    ggplot(circ) + geom_path(aes(x = x, y = y))
 
 
