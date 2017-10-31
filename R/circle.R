@@ -32,6 +32,7 @@ circle <- function(data, r = 0.5, s = 8, method = "b", closed = FALSE) {
   UseMethod("circle")
 }
 
+#' @export
 circle.matrix <- function(data, r = 0.5, s = 8, method = "b", closed = FALSE) {
   if ((NCOL(data) != 2) || is.complex(data)) stop(data_format_error)
 
@@ -42,11 +43,13 @@ circle.matrix <- function(data, r = 0.5, s = 8, method = "b", closed = FALSE) {
   res_mat
 }
 
+#' @export
 circle.data.frame <- function(data, r = 0.5, s = 8, method = "b", closed = FALSE) {
   # use the circle.matrix method
   as.matrix(data) %>% circle(r, s, method, closed) %>% as.data.frame()
 }
 
+#' @export
 circle.complex <- function(data, r = 0.5, s = 8, method = "b", closed = FALSE) {
   if (NCOL(data) > 1) stop(data_format_error)
 
