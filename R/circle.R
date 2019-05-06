@@ -58,7 +58,7 @@ circle.complex <- function(data, r = 0.5, s = 8, method = "b", closed = FALSE) {
 
 # a 'workhorse' function for the circle-functions.
 circler <- function(data, r, s, method, closed) {
-  if (any(is.na(data) || is.infinite(data)))
+  if (any(is.na(data) | is.infinite(data)))
     stop("'data' must not contain missing of infinite values.")
 
   if (r < 0) stop("r must be non-negative")
