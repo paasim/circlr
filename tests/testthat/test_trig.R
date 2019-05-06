@@ -19,31 +19,31 @@ test_that("rot rotates correctly for some examples", {
 
 test_that("incr_radius returns a convex polygon when the input is convex", {
   n <- 40
-  data <- rnorm(n) + rnorm(n)*1i
+  mat <- rnorm(n) + rnorm(n)*1i
   r <- runif(1, 0.5, 5)
-  data_chull_r <- incr_radius(get_chull(data), r)
-  expect_true(all(data_chull_r %in% data_chull_r[chull(data_chull_r)]))
+  chull_r <- incr_radius(get_chull(mat), r)
+  expect_true(all(chull_r %in% chull_r[chull(chull_r)]))
 })
 
 test_that("incr_radius works with one input point", {
   z <- rnorm(1) + rnorm(1)*1i
   r <- runif(1, 0.5, 5)
-  data_chull_r <- incr_radius(z, r)
-  expect_true(all(data_chull_r %in% data_chull_r[chull(data_chull_r)]))
+  chull_r <- incr_radius(z, r)
+  expect_true(all(chull_r %in% chull_r[chull(chull_r)]))
 })
 
 test_that("incr_radius works with two input points", {
   z <- rnorm(2) + rnorm(2)*1i
   r <- runif(1, 0.5, 5)
-  data_chull_r <- incr_radius(z, r)
-  expect_true(all(data_chull_r %in% get_chull(data_chull_r)))
+  chull_r <- incr_radius(z, r)
+  expect_true(all(chull_r %in% get_chull(chull_r)))
 })
 
 test_that("q_bezier returns a convex polygon with n points", {
   n <- 3
-  data <- rnorm(n) + rnorm(n)*1i
+  mat <- rnorm(n) + rnorm(n)*1i
   n_q <- 13
-  bez <- q_bezier(data, n_q)
+  bez <- q_bezier(mat, n_q)
   expect_equal(n_q, length(bez))
   expect_true(all(bez %in% get_chull(bez)))
 })
