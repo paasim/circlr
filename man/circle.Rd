@@ -36,7 +36,7 @@ either Bezier curves or semicircles around each corner.
 # A minimal example
 data <- data.frame(x = rnorm(5), y = rnorm(5))
 circ <- circle(data, closed = TRUE)
-ggplot(circ) + geom_path(aes(x = x, y = y))
+plot(circ, type = "l")
 }
 
 
