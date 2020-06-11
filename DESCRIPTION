@@ -1,7 +1,7 @@
 Package: circlr
 Type: Package
 Title: An R package to encircle a set of points
-Version: 0.5.0
+Version: 0.5.1
 Author: Markus Paasiniemi [aut]
 Maintainer: Markus Paasiniemi <paasim@iki.fi>
 Description:
