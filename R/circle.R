@@ -46,7 +46,7 @@ circle.matrix <- function(data, r = 0.5, s = 8, method = "b", closed = FALSE) {
 #' @export
 circle.data.frame <- function(data, r = 0.5, s = 8, method = "b", closed = FALSE) {
   # use the circle.matrix method
-  as.matrix(data) %>% circle(r, s, method, closed) %>% as.data.frame()
+  as.matrix(data) |> circle(r, s, method, closed) |> as.data.frame()
 }
 
 #' @export
@@ -69,14 +69,14 @@ circler <- function(data, r, s, method, closed) {
 
   if (method == "b") {
     # increase the radius of the data
-    res <- incr_radius(data_chull, r) %>%
+    res <- incr_radius(data_chull, r) |>
       # transform the data into a set of angles
-      data_to_angles(r) %>%
+      data_to_angles(r) |>
       # quadratic bezier curves given the points of the angles
-      lapply(q_bezier, s) %>% unlist()
+      lapply(q_bezier, s) |> unlist()
   } else if (method == "c") {
     # encircle each point, s is scaled to have ~similar scale as with bezier
-    res <- data_to_circles(data_chull, r, s*(length(data_chull)-1)) %>%
+    res <- data_to_circles(data_chull, r, s*(length(data_chull)-1)) |>
       # remove points that are not on the convex hull
       get_chull()
   } else {

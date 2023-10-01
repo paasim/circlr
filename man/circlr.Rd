@@ -3,8 +3,7 @@
 \docType{package}
 \name{circlr}
 \alias{circlr}
-\alias{circlr-package}
 \title{CIRCLR}
 \description{
-CIRCLR
+An R package for encircling a set of points
 }

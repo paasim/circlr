@@ -17,7 +17,7 @@ data_to_angles <- function(data, r) {
 # turn each point into a circle with radius r (evaulated at n points).
 data_to_circles <- function(data, r, n) {
   s <- seq(0, 2i*pi, length.out = n)
-  lapply(data, function(x) x + r*exp(s)) %>% unlist()
+  lapply(data, function(x) x + r*exp(s)) |> unlist()
 }
 
 get_chull <- function(data) data[chull(data)]
